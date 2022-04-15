@@ -71,7 +71,7 @@ multibranchPipelineJob('htask')
   {
    def traits = it / sources / data / 'jenkins.branch.BranchSource' / source / traits
        traits << 'jenkins.scm.impl.trait.WildcardSCMHeadFilterTrait' {
-        includes('feature/* develop dev-* sit-* prd-* cpt-* uat-*') // detect all branches
+        includes('*') // detect all branches
         excludes('master')
        }
   }
