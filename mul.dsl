@@ -43,11 +43,6 @@ multibranchPipelineJob('htask')
    }
   }
 
-  triggers
-  {
-   periodic(5)
-           }
-
   orphanedItemStrategy
   {
    discardOldItems
