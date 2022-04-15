@@ -42,7 +42,12 @@ multibranchPipelineJob('htask')
     }
    }
   }
-
+ triggers
+  {
+   periodicFolderTrigger{
+   interval('5m')
+   }
+           }
   orphanedItemStrategy
   {
    discardOldItems
