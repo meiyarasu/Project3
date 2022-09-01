@@ -190,31 +190,31 @@ $('INPUT[type="file"]').change(function () {
 });
 
 $("#btn-predict").click(function (event) {
-	var data = {'drug_id':$('.drug_ids').val(), 'avail_stock':$('#inputavailablestock').val()};
+	var data = {"input":{'code':$('.drug_ids').val(), 'stock':$('#inputavailablestock').val()}};
 	console.log(data);
 	$.ajax({
 		method: "POST",
 		contentType: 'application/json',
-		url: "get_drug_prediction",
+		url: 'https://5r7fo2pv23.execute-api.ap-south-1.amazonaws.com/default/markk-invoke-lambda',
 		data: JSON.stringify(data),
 		timeout: 600000,
+		referrerPolicy: 'no-referrer',
+		mode: 'cors', // no-cors, *cors, same-origin
+		cache: 'no-cache', // *default, no-cache, reload, force-cache, only-if-cached
+		credentials: 'same-origin', // include, *same-origin, omit
 		success: function (data) {
-			output = data['output']
-			$("#reorder").val(output["predicted_reorder"]);
-			$("#Demandnextweeks").val(output["prediction_next_two_weeks"]);
-			$("#reorderpoint").val(output["reorder_point"]);
-			$("#reorderqty").val(output["reorder_qty"]);
-			$("#safetystock").val(output["safety_stock"]);
+			output = jQuery.parseJSON(data);
+			$("#reorder").val(output["Predicted_Reorder"]);
+			$("#Demandnextweeks").val(output["Predicted_demand_for_next_two_weeks"].toString());
+			$("#reorderpoint").val(output["Reorder_Point"]);
+			$("#reorderqty").val(output["Re_order_quantity"]);
+			$("#safetystock").val(output["Safety_Stock"]);
 			
 		},
 		error: function (e) {
 
-			$("#result").text(e.responseText);
 			console.log("ERROR : ", e);
-			$(".json-result").hide();
-			$(".json-error").show();
-			$(".error-message").text(e.responseJSON.message);
-			$("#btnSubmit").prop("", false);
+			console.log("ERROR : ", e.responseText);
 
 		}
 	});
