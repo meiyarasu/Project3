@@ -7,7 +7,7 @@ User=sammy
 Group=www-data
 WorkingDirectory=/var/www/markk_service
 Environment="PATH=/var/www/markk_service/venv/bin"
-ExecStart=/var/www/markk_service/venv/bin/uwsgi --ini myproject.ini
+ExecStart=/var/www/markk_service/venv/bin/uwsgi --ini webapp.ini
 
 [Install]
 WantedBy=multi-user.target

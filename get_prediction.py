@@ -12,13 +12,13 @@ def get_predicted_data(drug_code,available_stock):
 
     drug_data = get_selected_drug_data_prediction(drug_code)
     
-    # s3_bucket = 'markk-sagemaker-s3-dev'
-    # key2 = 'data/Drug_Event_Profile_Data_25-05-2022.csv'
-    # s3 = boto3.client('s3')
-    # all_data = s3.get_object(Bucket=s3_bucket, Key=key2)
-    # data = pd.read_csv(io.BytesIO(all_data['Body'].read()), low_memory=False)
+    s3_bucket = 'markk-sagemaker-s3-dev'
+    key2 = 'data/Drug_Event_Profile_Data_25-05-2022.csv'
+    s3 = boto3.client('s3')
+    all_data = s3.get_object(Bucket=s3_bucket, Key=key2)
+    data = pd.read_csv(io.BytesIO(all_data['Body'].read()), low_memory=False)
 
-    data = pd.read_csv('Drug_Event_Profile_Data_25-05-2022.csv')
+    # data = pd.read_csv('Drug_Event_Profile_Data_25-05-2022.csv')
 
     
     df1=data[['Week_No','PDE_DRUG_TYPE_CD','PDE_DRUG_CD','PDE_DRUG_CLASS_CD','PDE_DRUG_QTY_DIS']]
