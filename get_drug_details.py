@@ -3,11 +3,11 @@ import boto3, io
 
 s3_bucket = 'markktest'
 key2 = 'Drug_Level_data.csv'
-s3 = boto3.client('s3')
-all_data = s3.get_object(Bucket=s3_bucket, Key=key2)
-df_drug_data = pd.read_csv(io.BytesIO(all_data['Body'].read()), low_memory=False)
+# s3 = boto3.client('s3')
+# all_data = s3.get_object(Bucket=s3_bucket, Key=key2)
+# df_drug_data = pd.read_csv(io.BytesIO(all_data['Body'].read()), low_memory=False)
 
-# df_drug_data = pd.read_csv(key2)
+df_drug_data = pd.read_csv(key2)
 
 def get_all_drugs():
     return df_drug_data['PDE_DRUG_CD'].tolist()

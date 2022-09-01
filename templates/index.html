@@ -153,8 +153,8 @@ $(document).ready(function () {
 			$("#DemandCategory").val(output['Demand_Category'])
 			$("#CostCategory").val(output['COST_CAT_TAG'])
 			$("#DemandVolatility").val(output['DEMAND_VOLATILITY'])
-			$("#Costper_unit").val(output['COST_PER_UNIT'])
-			$("#weeklydemand").val(output['AVG_WEEKLY_DEMAND'])
+			$("#Costper_unit").val(output['COST_PER_UNIT'].toFixed(2))
+			$("#weeklydemand").val(output['AVG_WEEKLY_DEMAND'].toFixed(2))
 			$("#MaxDemand").val(output['Max_Weekly_Demand'])
 
 
