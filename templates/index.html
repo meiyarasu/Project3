@@ -190,7 +190,7 @@ $('INPUT[type="file"]').change(function () {
 });
 
 $("#btn-predict").click(function (event) {
-	var data = {"input":{'code':$('.drug_ids').val(), 'stock':$('#inputavailablestock').val()}};
+	var data = {"input":{'code':parseInt($('.drug_ids').val()), 'stock':parseInt($('#inputavailablestock').val())}};
 	console.log(data);
 	$.ajax({
 		method: "POST",
