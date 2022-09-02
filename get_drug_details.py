@@ -7,7 +7,8 @@ key2 = 'data/Drug_Level_data.csv'
 key2 = 'processed_data/markk-healthcare-model.pkl'
 s3 = boto3.client('s3', aws_access_key_id = os.environ['aws_key'],aws_secret_access_key = os.environ['aws_sec'],region_name = 'ap-south-1')
 all_data = s3.get_object(Bucket=s3_bucket, Key=key2)
-df_drug_data = pd.read_csv(io.BytesIO(all_data['Body'].read()), low_memory=False)
+df_drug_data = pickle.load(io.BytesIO(all_data['Body'].read()))
+# df_drug_data = pd.read_csv(io.BytesIO(all_data['Body'].read()), low_memory=False)
 
 df_drug_data = df_drug_data.reset_index()
 # df_drug_data = pd.read_csv('Drug_Level_data.csv')
